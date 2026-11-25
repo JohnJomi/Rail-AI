@@ -1,0 +1,104 @@
+{
+  "raw_stop_rows": 417080,
+  "clean_stop_rows": 394129,
+  "trains": 5191,
+  "stations": 7679,
+  "median_halt_min": 1.0,
+  "timing_points": 290175,
+  "median_seg_speed_kmph": 58.69065743875243,
+  "busiest_hour": 8,
+  "top10": [
+    {
+      "station_code": "MYGL",
+      "station_name": "Miyagam Karjan Junction Ng",
+      "state": "Gujarat",
+      "trains_served": 202,
+      "avg_halt_min": 40.2,
+      "congestion_index": 63.76
+    },
+    {
+      "station_code": "HWH",
+      "station_name": "Howrah Jn",
+      "state": "West Bengal",
+      "trains_served": 283,
+      "avg_halt_min": 24.75,
+      "congestion_index": 60.66
+    },
+    {
+      "station_code": "ADI",
+      "station_name": "Ahmedabad Jn",
+      "state": "Gujarat",
+      "trains_served": 236,
+      "avg_halt_min": 22.798387096774192,
+      "congestion_index": 58.28
+    },
+    {
+      "station_code": "DLI",
+      "station_name": "Old Delhi",
+      "state": "Delhi NCT",
+      "trains_served": 188,
+      "avg_halt_min": 28.857142857142858,
+      "congestion_index": 58.07
+    },
+    {
+      "station_code": "NDLS",
+      "station_name": "New Delhi",
+      "state": "Delhi NCT",
+      "trains_served": 229,
+      "avg_halt_min": 24.08695652173913,
+      "congestion_index": 58.02
+    },
+    {
+      "station_code": "MAS",
+      "station_name": "Chennai Central",
+      "state": "Tamil Nadu",
+      "trains_served": 175,
+      "avg_halt_min": 27.0,
+      "congestion_index": 57.05
+    },
+    {
+      "station_code": "MGS",
+      "station_name": "Mughal Sarai Jn",
+      "state": "Uttar Pradesh",
+      "trains_served": 249,
+      "avg_halt_min": 18.6231884057971,
+      "congestion_index": 56.51
+    },
+    {
+      "station_code": "ALD",
+      "station_name": "Allahabad Jn",
+      "state": "Uttar Pradesh",
+      "trains_served": 242,
+      "avg_halt_min": 19.04705882352941,
+      "congestion_index": 56.35
+    },
+    {
+      "station_code": "BZA",
+      "station_name": "Vijayawada Jn",
+      "state": "Andhra Pradesh",
+      "trains_served": 263,
+      "avg_halt_min": 16.0,
+      "congestion_index": 55.75
+    },
+    {
+      "station_code": "BRC",
+      "station_name": "Vadodara Jn",
+      "state": "Gujarat",
+      "trains_served": 252,
+      "avg_halt_min": 11.982456140350877,
+      "congestion_index": 54.68
+    }
+  ],
+  "log": [
+    "[Ingest] schedules=(417080, 8), stations=(8990, 7), trains=(5208, 21)",
+    "[Clean] 'None' strings converted -> arrival NaN=27835, departure NaN=27827",
+    "[Clean] duplicates removed: 443",
+    "[Clean] rows with no arrival & no departure dropped: 22508",
+    "[Impute] state: 4427 values filled by 5-NN on coordinates",
+    "[Impute] zone: 4427 values filled by 5-NN on coordinates",
+    "[Clean] stations: 8990 -> 8975 (placeholder/duplicate codes removed); missing coords=278",
+    "[Integrate] stop rows without station match: 1735 (0.4%)",
+    "[Outlier] halt IQR upper fence=3.5 min; flagged=17932",
+    "[Outlier] impossible segment speeds nullified: 4977"
+  ]
+}

@@ -1,0 +1,9 @@
+,dtype,missing,missing_pct,unique
+arrival,str,27835,6.67,1440
+day,float64,22561,5.41,13
+train_name,str,0,0.0,3948
+station_name,str,0,0.0,8495
+station_code,str,0,0.0,8539
+id,int64,0,0.0,417080
+train_number,str,0,0.0,5208
+departure,str,27827,6.67,1440

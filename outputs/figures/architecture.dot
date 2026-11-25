@@ -1,0 +1,53 @@
+
+digraph G {
+  graph [rankdir=TB, splines=ortho, nodesep=0.35, ranksep=0.55, fontname="Helvetica",
+         bgcolor="white", pad=0.3, newrank=true, compound=true];
+  node  [shape=box, style="rounded", color="black", fontcolor="black", fontname="Helvetica",
+         fontsize=11, penwidth=1.2, width=2.3, height=0.5];
+  edge  [color="black", penwidth=1.1, arrowsize=0.7];
+
+  subgraph cluster_p1 { label=<<B>PHASE 1</B><BR/>DATA SOURCES>; style="dashed"; color="black"; fontsize=12;
+    s1 [label="schedules.json\n417,080 stop records"];
+    s2 [label="stations.json\n8,990 stations (GeoJSON)"];
+    s3 [label="trains.json\n5,208 train routes"];
+  }
+  subgraph cluster_p2 { label=<<B>PHASE 2</B><BR/>INGESTION &amp; PROFILING>; style="dashed"; color="black"; fontsize=12;
+    i1 [label="JSON / GeoJSON parser\n(pandas DataFrames)"];
+    i2 [label="Data profiling\ndtypes · missing · cardinality"];
+  }
+  subgraph cluster_p3 { label=<<B>PHASE 3</B><BR/>DATA PREPROCESSING>; style="dashed"; color="black"; fontsize=12;
+    c1 [label="3.1 Cleaning\n'None'→NaN · duplicates · text std."];
+    c2 [label="3.2 Transformation\nHH:MM:SS→minutes · day offset"];
+    c3 [label="3.3 Missing-value imputation\n5-NN (state, zone) · median"];
+    c4 [label="3.4 Integration\nstops ⋈ stations ⋈ trains"];
+    c5 [label="3.5 Feature engineering\nhalt · segment km/speed · hour"];
+    c6 [label="3.6 Outlier treatment\nIQR flag · capping · physical bounds"];
+    c7 [label="3.7 Scaling & encoding\nlog1p · z-score · min-max · one-hot"];
+    {rank=same; c1 -> c2 -> c3 -> c4;}
+    {rank=same; c7 -> c6 -> c5 [dir=back];}
+    c4 -> c5;
+  }
+  subgraph cluster_p4 { label=<<B>PHASE 4</B><BR/>STORAGE>; style="dashed"; color="black"; fontsize=12;
+    d1 [label="stops_clean.csv\n(stop-level)", shape=cylinder, style=""];
+    d2 [label="station_features.csv\n(station-level)", shape=cylinder, style=""];
+  }
+  subgraph cluster_p5 { label=<<B>PHASE 5</B><BR/>ANALYTICS &amp; MODELLING>; style="dashed"; color="black"; fontsize=12;
+    a1 [label="Descriptive EDA\nhourly load · dwell profile"];
+    a2 [label="Congestion index\n(weighted composite)"];
+    a3 [label="Future: clustering /\ndelay prediction"];
+  }
+  subgraph cluster_p6 { label=<<B>PHASE 6</B><BR/>DECISION SUPPORT>; style="dashed"; color="black"; fontsize=12;
+    o1 [label="Dashboards & reports"];
+    o2 [label="Timetable planners /\nzonal operations"];
+  }
+
+  {rank=same; s1; s2; s3;}
+  {rank=same; i1 -> i2;}
+  {rank=same; d1; d2;}
+  {rank=same; a1; a2; a3;}
+  {rank=same; o1; o2;}
+  {s1 s2 s3} -> i1; i2 -> c1;
+  c7 -> d1; c7 -> d2;
+  d1 -> a1; d2 -> a2; d2 -> a3;
+  a1 -> o1; a2 -> o1; a3 -> o2; o1 -> o2;
+}

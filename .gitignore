@@ -1,0 +1,4 @@
+data/raw/
+data/processed/stops_clean.csv
+__pycache__/
+*.pyc

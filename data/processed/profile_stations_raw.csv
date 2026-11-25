@@ -1,0 +1,8 @@
+,dtype,missing,missing_pct,unique
+state,str,4532,50.41,30
+code,str,0,0.0,8990
+name,str,0,0.0,8937
+zone,str,4532,50.41,18
+address,str,4532,50.41,2724
+lon,float64,293,3.26,8686
+lat,float64,293,3.26,8689

@@ -1,0 +1,5 @@
+pandas
+numpy
+scikit-learn
+matplotlib
+graphviz  # optional: needs the 'dot' binary for architecture.py
