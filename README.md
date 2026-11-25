@@ -9,7 +9,7 @@ Data analytics assignment: problem statement, objectives, literature survey, arc
 pip install -r requirements.txt
 python src/download_data.py     # fetches raw JSON into data/raw/
 python src/preprocess.py        # full preprocessing pipeline -> data/processed/, outputs/figures/
-python src/architecture.py      # architecture diagram (needs Graphviz)
+python src/architecture.py      # A4 architecture diagram (matplotlib)
 node docs/build_doc.js          # optional: rebuild the Word report (npm i docx)
 ```
 
